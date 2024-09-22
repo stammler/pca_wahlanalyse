@@ -56,7 +56,7 @@ def load_election_data(election: str) -> SimpleNamespace:
     response = http.request('GET', election_file)
     zip_file = zipfile.ZipFile(BytesIO(response.data))
     for f in zip_file.filelist:
-        if f.filename.endswith("module_definition.js"):
+        if f.filename.endswith("module_definition.js") or f.filename.endswith("module_definition_v1_01.js"):
             file = f
     datafile = zip_file.open(file)
     data = parse_js(datafile.readlines())
@@ -154,6 +154,10 @@ def parse_js(lines: list) -> SimpleNamespace:
 
 
 election_files = {
+    "2024-09-22_bb": "https://www.wahl-o-mat.de/brandenburg2024/wahlomat.zip",
+    "2024-09-01_sn": "https://www.wahl-o-mat.de/sachsen2024/wahlomat.zip",
+    "2024-09-01_th": "https://www.wahl-o-mat.de/thueringen2024/wahlomat.zip",
+    "2024-06-09_eu": "https://www.wahl-o-mat.de/europawahl2024/wahlomat.zip",
     "2023-05-14_hb": "https://www.wahl-o-mat.de/bremen2023/wahlomat.zip",
     "2023-02-12_be": "https://archiv.wahl-o-mat.de/berlin2023/wahlomat.zip",
     "2022-10-09_ni": "https://archiv.wahl-o-mat.de/niedersachsen2022/wahlomat.zip",
@@ -185,6 +189,7 @@ election_files = {
 
 _colors = {
     "III. Weg": "#1d542c",
+    "ABG": "#7F2982",
     "AfD": "#009ee0",
     "ALFA": "#0066ff",
     "Allianz Deutscher Demokraten": "#1e5ea5",
@@ -197,10 +202,12 @@ _colors = {
     "BIW": "#005ab0",
     "Blaue *raute*TeamPetry Thüringen": "#25378f",
     "BP": "#7FFFFF",
+    "BSW": "#7d254f",
     "bunt.saar": "#f49800",
     "BÜNDNIS21": "#e81972",
     "Bündnis 21/RRP": "#ff6a1a",
     "Bündnis C": "#0872ba",
+    "BÜNDNIS DEUTSCHLAND": "#a2bbf3",
     "BÜRGERBEWEGUNG": "#f07e18",
     "BüSo": "#1f4569",
     "CDU": "#000000",
@@ -208,9 +215,11 @@ _colors = {
     "CDU / CSU": "#000000",
     "CSU": "#000000",
     "CM": "#029de7",
+    "DAVA": "#068E91",
     "DiB": "#854d68",
     "DIE DIREKTE!": "#ffc000",
     "DKP": "#ed1c24",
+    "DLW": "#227172",
     "DM": "#284f8d",
     "DSP": "#a1b45a",
     "DSU": "#00B2EE",
@@ -223,21 +232,27 @@ _colors = {
     "DIE FRAUEN": "#FF83FA",
     "FREIE WÄHLER": "#FF8000",
     "BVB / FREIE WÄHLER": "#FF8000",
+    "FREIE SACHSEN": "#20B2AA",
     "Die Grauen": "#9e9e9e",
     "Graue Panther": "#6b6b6b",
     "GRÜNE": "#46962b",
     "GRÜNE/B 90": "#46962b",
+    "HEIMAT": "#d79e2a",
+    "PdH": "#2191BD",
     "Die Humanisten": "#2191BD",
     "Die Humanisten Niedersachsen": "#2191BD",
+    "KLIMALISTE": "#5cc14c",
     "Klimaliste Berlin": "#5cc14c",
     "Klimaliste ST": "#5cc14c",
     "KPD": "#8B0000",
+    "LETZTE GENERATION": "#FF4C00",
     "LfK": "#d2175e",
     "LIEBE": "#db3028",
     "DIE LINKE": "#BE3075",
     "DIE LINKE.": "#BE3075",
     "LKR": "#f39200",
     "MENSCHLICHE WELT": "#f26f22",
+    "MERA25": "#f15a32",
     "MIETERPARTEI": "#002b83",
     "MLPD": "#ed1c24",
     "neo": "#a5d839",
@@ -251,6 +266,7 @@ _colors = {
     "PDV": "#002366",
     "PARTEI DER VERNUNFT": "#002366",
     "PIRATEN": "#ff820a",
+    "Plus": "#792D8F",
     "pro Deutschland": "#096594",
     "PRO NRW": "#005ea8",
     "PSG": "#B70E0C",
@@ -274,6 +290,7 @@ _colors = {
     "Volt": "#562883",
     "WIR": "#496164",
     "WiR2020": "#496164",
+    "WU": "#0A3C5B",
     "Z.": "#005a62",
     "ZENTRUM": "#0000CD",
 }
