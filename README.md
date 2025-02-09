@@ -6,6 +6,6 @@ Dies ist ein Repository, um die Wahlprogramm von Parteien mithilfe der [Hauptkom
 
 Als Beispiele stehen mehrere Notebooks zur Verfügung:
 
-1. [Kleine Einführung zur Hauptkomponentenanalyse](notebooks/beispiel_pca.ipynb)
-2. [Bundestagswahl 2025](notebooks/beispiel_btw2025.ipynb)
-3. [Hamburger Bürgerschaftswahl 2025](notebooks/beispiel_hh2025.ipynb)
+1. [Kleine Einführung zur Hauptkomponentenanalyse](notebooks/beispiel_pca.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/stammler/pca_wahlanalyse/HEAD?labpath=notebooks%2Fbeispiel_pca.ipynb)
+2. [Bundestagswahl 2025](notebooks/beispiel_btw2025.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/stammler/pca_wahlanalyse/HEAD?labpath=notebooks%2Fbeispiel_btw2025.ipynb)
+3. [Hamburger Bürgerschaftswahl 2025](notebooks/beispiel_hh2025.ipynb) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/stammler/pca_wahlanalyse/HEAD?labpath=notebooks%2Fbeispiel_hh2025.ipynb)
