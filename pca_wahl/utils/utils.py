@@ -63,20 +63,13 @@ def load_election_data(election: str) -> SimpleNamespace:
     
     # This is to get the TOS
     http = urllib3.PoolManager()
-    response = http.request('GET', "https://www.bpb.de/system/files/datei/Wahl-O-Mat%20Bundestag%202021_Datensatz_v1.02.zip")
+    response = http.request('GET', "https://www.bpb.de/system/files/datei/2024-09-23_Wahl-O-Mat-Datensaetze.zip")
     zip_file = zipfile.ZipFile(BytesIO(response.data))
     for f in zip_file.filelist:
-        if f.filename.endswith(".xlsx"):
+        if f.filename.endswith(".txt"):
             file = f
-    datafile = zip_file.open(file)
-    df_note = pd.read_excel(datafile, sheet_name=0, header=None)
-    list_note = []
-    for s in df_note[0]:
-        if type(s) == str:
-            list_note.append(s)
-        else:
-            list_note.append("")
-    data.note = "\n".join(list_note)
+    with zip_file.open(file, "r") as f:
+        data.note = f.read().decode("unicode-escape")
     
     return data
 
@@ -154,6 +147,8 @@ def parse_js(lines: list) -> SimpleNamespace:
 
 
 election_files = {
+    "2025-03-02_hh": "https://www.wahl-o-mat.de/hamburg2025/wahlomat.zip",
+    "2025-02-23_de": "https://www.wahl-o-mat.de/bundestagswahl2025/wahlomat.zip",
     "2024-09-22_bb": "https://www.wahl-o-mat.de/brandenburg2024/wahlomat.zip",
     "2024-09-01_sn": "https://www.wahl-o-mat.de/sachsen2024/wahlomat.zip",
     "2024-09-01_th": "https://www.wahl-o-mat.de/thueringen2024/wahlomat.zip",
@@ -216,6 +211,7 @@ _colors = {
     "CSU": "#000000",
     "CM": "#029de7",
     "DAVA": "#068E91",
+    "DAVA-Hamburg": "#068E91",
     "DiB": "#854d68",
     "DIE DIREKTE!": "#ffc000",
     "DKP": "#ed1c24",
@@ -248,6 +244,7 @@ _colors = {
     "LETZTE GENERATION": "#FF4C00",
     "LfK": "#d2175e",
     "LIEBE": "#db3028",
+    "Die Linke": "#BE3075",
     "DIE LINKE": "#BE3075",
     "DIE LINKE.": "#BE3075",
     "LKR": "#f39200",
@@ -281,6 +278,7 @@ _colors = {
     "Tierschutzallianz": "#3d449a",
     "Tierschutzpartei": "#006D77",
     "Team Todenhöfer": "#20274d",
+    "Die Gerechtigkeitspartei - Team Todenhöfer": "#20274d",
     "UNABHÄNGIGE": "#ff9900",
     "du.": "#ff9700",
     "Die Urbane.": "#ff9700",
@@ -288,6 +286,8 @@ _colors = {
     "DIE VIOLETTEN": "#621c75",
     "Volksabstimmung": "#757575",
     "Volt": "#562883",
+    "Volt ": "#562883",
+    "WerteUnion": "#0A3C5B",
     "WIR": "#496164",
     "WiR2020": "#496164",
     "WU": "#0A3C5B",
