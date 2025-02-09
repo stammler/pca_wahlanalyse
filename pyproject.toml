@@ -1,0 +1,20 @@
+[build-system]
+build-backend = 'mesonpy'
+requires = ['meson-python']
+
+[project]
+name = 'pca_wahl'
+version = '1.0.0'
+description = 'PCA Wahlanalyse'
+readme = { file = 'README.md', content-type = 'text/markdown' }
+authors = [
+  { name = "Sebastian Stammler", email = "sebastian.stammler@gmail.com" },
+]
+maintainers = [
+  { name = "Sebastian Stammler", email = "sebastian.stammler@gmail.com" },
+]
+license = { file = 'LICENSE' }
+dependencies = ["matplotlib", "numpy", "openpyxl", "pandas", "scikit-learn"]
+
+[project.urls]
+Repository = "https://github.com/stammler/pca_wahlanalyse/"
