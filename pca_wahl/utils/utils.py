@@ -33,7 +33,7 @@ def remove_party_from_data(data: SimpleNamespace, remove=[]) -> SimpleNamespace:
 
 def show_available_elections():
     for election in elections:
-        print(f"{election}: {elections[election]["name"]:45s}", end="")
+        print(f"{election}: {elections[election]['name']:45s}", end="")
         http = urllib3.PoolManager()
         response = http.request("HEAD", elections[election]["file"])
         if response.status == 200:
