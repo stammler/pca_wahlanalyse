@@ -14,7 +14,7 @@ maintainers = [
   { name = "Sebastian Stammler", email = "sebastian.stammler@gmail.com" },
 ]
 license = { file = 'LICENSE' }
-dependencies = ["matplotlib", "numpy", "openpyxl", "pandas", "scikit-learn"]
+dependencies = ["matplotlib", "numpy", "openpyxl", "pandas", "scikit-learn", "urllib3"]
 
 [project.urls]
 Repository = "https://github.com/stammler/pca_wahlanalyse/"
